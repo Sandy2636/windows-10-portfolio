@@ -12,12 +12,19 @@ export default function DesktopPage() {
       unique: true,
     },
     {
-      id: "gamse",
-      name: "Games",
-      icon: "/icons/Games.png",
-      appType: "GAMES_LAUNCHER",
-      // appProps: { initialPath: "C:/" },
+      id: "resume",
+      name: "About me",
+      icon: "/icons/Aboutme.png",
+      appType: "RESUME_VIEWER",
       unique: true,
+    },
+    {
+      id: "projects",
+      name: "My Projects",
+      icon: "/icons/my-projects.png",
+      appType: "FILE_EXPLORER",
+      appProps: { initialPath: "C:/Projects" },
+      unique: false,
     },
     {
       id: "contactme",
@@ -28,13 +35,13 @@ export default function DesktopPage() {
       unique: true,
     },
     {
-      id: "projects",
-      name: "My Projects",
-      icon: "/icons/my-projects.png",
-      appType: "FILE_EXPLORER",
-      appProps: { initialPath: "C:/Projects" },
-      unique: false,
-    }, // Allow multiple project explorers
+      id: "games",
+      name: "Games",
+      icon: "/icons/Games.png",
+      appType: "GAMES_LAUNCHER",
+      // appProps: { initialPath: "C:/" },
+      unique: true,
+    },
     {
       id: "blogpad",
       name: "BlogPad",
@@ -42,13 +49,7 @@ export default function DesktopPage() {
       appType: "BLOG_PAD",
       unique: true,
     }, // Show list of articles
-    {
-      id: "resume",
-      name: "About me",
-      icon: "/icons/Aboutme.png",
-      appType: "RESUME_VIEWER",
-      unique: true,
-    },
+
     {
       id: "source",
       name: "Source Code",

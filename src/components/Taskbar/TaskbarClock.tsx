@@ -15,8 +15,8 @@ export default function TaskbarClock() {
 
   return (
     <div className="text-xs px-2 text-center leading-tight h-full flex flex-col justify-center items-center hover:bg-white/10 cursor-default">
-      <div>{format(time, "h:mm a")}</div>
-      <div>{format(time, "M/d/yyyy")}</div>
+      <div>{format(time, "hh:mm a")}</div>
+      <div>{format(time, "dd-MM-yyyy")}</div>
     </div>
   );
 }

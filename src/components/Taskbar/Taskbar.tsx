@@ -36,13 +36,7 @@ export default function Taskbar() {
               }
             />
           ))}
-          {/* <TaskbarItem
-            id="2"
-            icon="/icons/chrome.svg"
-            appName="Chrome"
-            isActive={false}
-            onClick={() => console.log("Focus/Open Chrome")}
-          /> */}
+
           {/* Map through openWindows from context here */}
         </div>
         <div className="flex-grow" /> {/* Spacer */}

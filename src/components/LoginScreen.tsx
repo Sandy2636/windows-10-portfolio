@@ -32,53 +32,59 @@ export default function LoginScreen({ onLoginSuccess }: LoginScreenProps) {
   }, [isLoggingIn]);
 
   return (
-    <div
-      style={{ backgroundImage: `url(/Wallpaper.webp)` }}
-      className="fixed inset-0 bg-win-blue flex flex-col items-center justify-center backdrop-blur-md animate-fade-in bg-cover bg-center bg-no-repeat"
-    >
-      {/* Apply blur effect to a background image if you have one */}
-      <div className="text-center text-win-white">
-        {!isLoggingIn ? (
-          <>
-            <Image
-              src="/Avatar.webp" // Add your avatar to public folder
-              alt="User Avatar"
-              width={96}
-              height={96}
-              className="rounded-full mx-auto mb-4 border-3 overflow-hidden aspect-square border-win-white"
-            />
-            <h1 className="text-3xl mb-2">Saurav Chaudhari</h1>
-            <p className="mb-6">User</p>
-            <div className="w-64 mx-auto">
-              {/* Simulate password input, not functional */}
-              <input
-                type={showPassword ? "text" : "password"}
-                placeholder="Password"
-                readOnly
-                className="w-full p-2 rounded bg-white/20 text-win-white placeholder-win-gray-light mb-4 text-center"
-                value="***********" // Fake password
+    <div className="fixed inset-0">
+      {/* Blurred background layer */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat blur-md scale-105"
+        style={{ backgroundImage: `url(/LockScreen.jpg)` }}
+      ></div>
+
+      {/* Content layer */}
+      <div className="relative z-10 flex flex-col items-center justify-center h-full">
+        {/* Apply blur effect to a background image if you have one */}
+        <div className="text-center text-win-white">
+          {!isLoggingIn ? (
+            <>
+              <Image
+                src="/Avatar.webp" // Add your avatar to public folder
+                alt="User Avatar"
+                width={150}
+                height={150}
+                className="rounded-full mx-auto mb-4 border-3 overflow-hidden aspect-square border-win-white"
               />
-              <button
-                onClick={handleSignIn}
-                className="w-full p-2 rounded bg-win-white/30 hover:bg-win-white/40 transition-colors"
-              >
-                Sign in
-              </button>
-            </div>
-          </>
-        ) : (
-          <>
-            <Image
-              src="/user-avatar.png"
-              alt="User Avatar"
-              width={96}
-              height={96}
-              className="rounded-full mx-auto mb-4 animate-pulse"
-            />
-            <div className="w-8 h-8 border-2 border-dashed rounded-full animate-spinner border-win-white mx-auto mb-4"></div>
-            <p className="text-xl">{welcomeText}</p>
-          </>
-        )}
+              <h1 className="text-3xl mb-2">Saurav Chaudhari</h1>
+              <p className="mb-6">User</p>
+              <div className="w-64 mx-auto">
+                {/* Simulate password input, not functional */}
+                <input
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Password"
+                  readOnly
+                  className="w-full p-2 rounded bg-white/20 text-win-white placeholder-win-gray-light mb-4 text-center"
+                  value="***********" // Fake password
+                />
+                <button
+                  onClick={handleSignIn}
+                  className="w-full p-2 rounded bg-win-white/30 hover:bg-win-white/40 transition-colors"
+                >
+                  Sign in
+                </button>
+              </div>
+            </>
+          ) : (
+            <>
+              <Image
+                src="/user-avatar.png"
+                alt="User Avatar"
+                width={96}
+                height={96}
+                className="rounded-full mx-auto mb-4 animate-pulse"
+              />
+              <div className="w-8 h-8 border-2 border-dashed rounded-full animate-spinner border-win-white mx-auto mb-4"></div>
+              <p className="text-xl">{welcomeText}</p>
+            </>
+          )}
+        </div>
       </div>
     </div>
   );

@@ -25,7 +25,7 @@ export default function TaskbarItem({
                   hover:bg-white/20
                   ${isActive ? "bg-white/10" : "bg-transparent"}`}
     >
-      <Image src={icon} alt={appName} width={16} height={16} />
+      <Image src={icon} alt={appName} width={26} height={26} />
       {/* <span className="text-xs text-win-white hidden sm:inline">{appName}</span> */}
       {/* Optional: line indicating active/open status */}
       <div

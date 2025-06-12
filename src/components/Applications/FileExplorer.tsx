@@ -1,11 +1,13 @@
 // src/components/Applications/FileExplorer.tsx
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Children } from "react";
+import Image from "next/image";
 import {
   FolderIcon,
   DocumentIcon,
   ChevronRightIcon,
   ArrowUpIcon,
+  ArrowRightIcon,
   HomeIcon,
   ComputerDesktopIcon,
   DocumentDuplicateIcon,
@@ -14,6 +16,7 @@ import {
   MusicalNoteIcon,
   ChevronDownIcon,
   MagnifyingGlassIcon,
+  ArrowLeftIcon,
 } from "@heroicons/react/24/outline"; // Using outline for a lighter feel
 // You might want more specific icons for file types or from a Windows 10 icon set
 
@@ -27,7 +30,14 @@ const fileSystem = {
       Projects: {
         type: "folder",
         children: {
-          /* ... */
+          SaaStra: {
+            type: "folder",
+            Children: {},
+          },
+          SaleBots: {
+            type: "chrome",
+            children: {},
+          },
         },
       },
       Documents: {
@@ -84,6 +94,17 @@ const getItemIcon = (itemData: any, itemName: string) => {
   if (itemName.endsWith(".mp3") || itemName.endsWith(".wav")) {
     return (
       <MusicalNoteIcon className="w-5 h-5 mr-3 text-purple-500 flex-shrink-0" />
+    );
+  }
+  if (itemData.type === "chrome") {
+    return (
+      <Image
+        src={"/icon/chrome.png"}
+        alt={"Chrome"}
+        width={40}
+        height={40}
+        className="w-5 h-5 mr-3 text-yellow-500 flex-shrink-0"
+      />
     );
   }
   // Add more specific icons (PDF, DOCX, etc.)
@@ -230,7 +251,7 @@ export default function FileExplorer({
           disabled={currentPathArray.length <= 1}
           className="p-1.5 hover:bg-win-gray rounded disabled:opacity-50"
         >
-          <ArrowUpIcon className="w-4 h-4 text-gray-700" />
+          <ArrowLeftIcon className="w-4 h-4 text-gray-700" />
         </button>
         {/* <button className="p-1.5 hover:bg-win-gray rounded disabled:opacity-50"> <ArrowLeftIcon/> </button> */}
         {/* <button className="p-1.5 hover:bg-win-gray rounded disabled:opacity-50"> <ArrowRightIcon/> </button> */}

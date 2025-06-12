@@ -33,10 +33,10 @@ interface UserProfileProps {
 
 // Dummy Profile Data (Replace with your actual data)
 const defaultProfileData = {
-  name: "Your Name",
-  title: "Senior Full-Stack Developer | React & Next.js Enthusiast",
-  avatarUrl: "/user-avatar.png", // Path to your avatar in /public
-  bio: "Passionate and results-oriented developer with X years of experience in building dynamic web applications. I thrive on solving complex problems and creating intuitive user experiences. This portfolio is a testament to my love for detail and interactive design, built with Next.js to mimic Windows 10.",
+  name: "Saurav Chaudhari",
+  title: "Full-Stack Developer | React & Next.js Enthusiast | Gen AI ",
+  avatarUrl: "/Avatar.webp", // Path to your avatar in /public
+  bio: "Passionate and results-oriented developer with 3 years of experience in building dynamic web applications. I thrive on solving complex problems and creating intuitive user experiences. This portfolio is a testament to my love for detail and interactive design, built with Next.js to mimic Windows 10.",
   skills: [
     {
       category: "Front-End",
@@ -56,7 +56,7 @@ const defaultProfileData = {
       items: [
         "Node.js",
         "Express.js",
-        "Python (Flask/Django)",
+        "Python (Flask)",
         "REST APIs",
         "GraphQL",
       ],
@@ -70,36 +70,29 @@ const defaultProfileData = {
   ],
   experience: [
     {
-      role: "Lead Developer",
-      company: "Tech Solutions Inc.",
-      duration: "2021 - Present",
+      role: "Software Developer",
+      company: "Visaero India pvt ltd.",
+      duration: "2022 - Present",
       description:
-        "Led a team of 5 developers in creating innovative client solutions using React and Node.js. Spearheaded the adoption of Next.js for improved SEO and performance.",
-    },
-    {
-      role: "Software Engineer",
-      company: "Web Wizards LLC",
-      duration: "2018 - 2021",
-      description:
-        "Developed and maintained full-stack web applications for various clients. Contributed to UI/UX design and database architecture.",
+        "I architected mission-critical systems for global visa processing, significantly enhancing efficiency and reliability. This included engineering a dynamic rule-based engine (React/Node.js) that automated Visa Offer creation, slashing configuration time from 8-9 hours to just 5-10 minutes. I also revolutionized the pricing system by building granular price and access management featuring real-time currency persistence to maintain original USD values during fluctuations and implemented cascade updating to auto-sync over 200 dependent offers whenever master prices changed. Furthermore, I led the development of three Progressive Web Applications (PWAs) that reliably process over 10,000 monthly transactions with 99.8% uptime. Concurrently, as Scrum Master, I drove Agile optimizations ensuring 100% sprint completion across six consecutive cycles.",
     },
   ],
   contactLinks: [
     {
       name: "GitHub",
-      url: "https://github.com/yourusername",
+      url: "https://github.com/Sandy2636",
       icon: CommandLineIcon,
     }, // Replace with actual Github logo
     {
       name: "LinkedIn",
-      url: "https://linkedin.com/in/yourusername",
+      url: "https://www.linkedin.com/in/saurav-chaudhari-2174371a2",
       icon: BriefcaseIcon,
     },
-    {
-      name: "Portfolio Site",
-      url: "https://your-actual-portfolio.com",
-      icon: LinkIcon,
-    }, // If you have another live one
+    // {
+    //   name: "Portfolio Site",
+    //   url: "https://your-actual-portfolio.com",
+    //   icon: LinkIcon,
+    // },
   ],
 };
 
@@ -134,12 +127,12 @@ export default function UserProfile({
     <div className="flex h-full bg-win-white font-segoe-ui text-sm text-black select-none">
       {/* Sidebar for Profile Pic and Tabs */}
       <div className="w-56 bg-[#e6e6e6] p-3 border-r border-win-gray flex flex-col items-center flex-shrink-0">
-        <div className="mt-2 mb-4 text-center">
+        <div className="mt-2 mb-4 flex flex-col items-center">
           <Image
             src={profileData.avatarUrl}
             alt={profileData.name}
             width={80}
-            height={80}
+            height={40}
             className="rounded-full border-2 border-win-blue shadow-md"
           />
           <h1 className="text-base font-semibold mt-2.5 text-gray-800">

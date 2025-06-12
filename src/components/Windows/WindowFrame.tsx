@@ -6,6 +6,7 @@ import Draggable, {
   DraggableData,
   DraggableEvent,
 } from "react-draggable";
+// @ts-ignore
 import { ResizableBox, ResizeCallbackData } from "react-resizable";
 import "react-resizable/css/styles.css";
 
@@ -109,6 +110,7 @@ export default function WindowFrame({
 
   return (
     <Draggable
+      // @ts-ignore
       nodeRef={nodeRef}
       handle=".window-title-bar"
       position={isMaximized ? { x: 0, y: 0 } : currentPosition}
@@ -144,19 +146,23 @@ export default function WindowFrame({
             zIndex, // CRITICAL: Use the dynamic zIndex from props
           }}
           onClickCapture={handleClickOnWindow} // Use a more specific click handler
-          resizeHandles={
-            isMaximized ? [] : ["s", "w", "e", "n", "sw", "nw", "se", "ne"]
-          } // Disable handles when maximized
+          // resizeHandles={isMaximized ? [] : ["s", "w", "e", "n", "sw", "se"]} // Disable handles when maximized
         >
           <div
-            className={`window-title-bar h-7 flex items-center justify-between pl-2 pr-1 select-none
+            className={`window-title-bar h-7 flex items-center justify-between pl-2 pr-[1px] pt-[1px] select-none
                       ${
                         isActive
                           ? "bg-win-blue text-win-white cursor-grab"
                           : "bg-win-gray-light text-win-black cursor-default"
                       }`}
           >
-            <span className="text-xs font-semibold truncate">{title}</span>
+            <span
+              className={`text-xs ${
+                isActive ? "font-semibold" : "text-gray-600"
+              } truncate`}
+            >
+              {title}
+            </span>
             <div className="flex items-center">
               <button
                 onClick={(e) => {
@@ -178,12 +184,13 @@ export default function WindowFrame({
                 className={`p-1 w-8 h-full ${
                   isActive ? "hover:bg-white/20" : "hover:bg-win-gray/30"
                 }`}
-                title={isMaximized ? "Restore" : "Maximize"}
+                title={isMaximized ? "Maximize" : "Restore"}
               >
                 {isMaximized ? (
-                  <RestoreIcon className="w-3 h-3 mx-auto" />
-                ) : (
                   <MaximizeIcon className="w-3 h-3 mx-auto" />
+                ) : (
+                  // <RestoreIcon className="w-3 h-3 mx-auto" />
+                  <span className="w-3 h-3 mx-auto">▢</span>
                 )}
               </button>
               <button

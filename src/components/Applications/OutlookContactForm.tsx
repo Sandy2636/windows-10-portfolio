@@ -1,6 +1,7 @@
 // src/components/Applications/OutlookContactForm.tsx
 "use client";
 import React, { useState } from "react";
+import emailjs from "emailjs-com";
 import {
   PaperAirplaneIcon,
   UserCircleIcon,
@@ -15,7 +16,7 @@ interface OutlookContactFormProps {
 
 export default function OutlookContactForm({
   windowId,
-  recipientEmail = "your-email@example.com", // Replace with your actual email
+  recipientEmail = "chaudharisaurav356@gmail.com", // Replace with your actual email
 }: OutlookContactFormProps) {
   const [fromEmail, setFromEmail] = useState(""); // Could be prefilled with a dummy or user input
   const [subject, setSubject] = useState("");
@@ -25,44 +26,44 @@ export default function OutlookContactForm({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatusMessage("Sending...");
-    // TODO: Implement actual email sending logic here
-    // This would involve an API call to a backend service (EmailJS, SendGrid, serverless function)
-    // Example:
-    // try {
-    //   const response = await fetch('/api/send-email', {
-    //     method: 'POST',
-    //     headers: { 'Content-Type': 'application/json' },
-    //     body: JSON.stringify({ to: recipientEmail, from: fromEmail, subject, body }),
-    //   });
-    //   if (response.ok) {
-    //     setStatusMessage('Message sent successfully! Thank you.');
-    //     setSubject(''); setBody(''); setFromEmail(''); // Clear form
+
+    const templateParams = {
+      subject,
+      from: fromEmail,
+      message: body,
+    };
+
+    try {
+      const result = await emailjs.send(
+        "service_btu5cwj",
+        "template_gttnvjs",
+        templateParams,
+        "1vbWD5sZZxYtEGM7y"
+      );
+      console.log(result.text);
+      setStatusMessage("Message sent successfully!");
+      setSubject("");
+      setBody("");
+      if (isFromEditable) setFromEmail("");
+    } catch (err) {
+      console.log(err);
+      setStatusMessage("Error sending message.");
+    }
+
+    // setTimeout(() => {
+    //   // Simulate API call
+    //   if (subject && body && (fromEmail || !isFromEditable)) {
+    //     // Simple validation
+
     //   } else {
-    //     const errorData = await response.json();
-    //     setStatusMessage(`Error: ${errorData.message || 'Could not send message.'}`);
+    //     setStatusMessage(
+    //       "Please fill in all required fields (simulated error)."
+    //     );
     //   }
-    // } catch (error) {
-    //   setStatusMessage('Error: Network issue or server unavailable.');
-    // }
-    setTimeout(() => {
-      // Simulate API call
-      if (subject && body && (fromEmail || !isFromEditable)) {
-        // Simple validation
-        setStatusMessage(
-          `Message to ${recipientEmail} sent successfully (simulated)! Thank you for reaching out.`
-        );
-        setSubject("");
-        setBody("");
-        if (isFromEditable) setFromEmail("");
-      } else {
-        setStatusMessage(
-          "Please fill in all required fields (simulated error)."
-        );
-      }
-    }, 1500);
+    // }, 1500);
   };
 
-  const isFromEditable = false; // Set to true if you want users to enter their email
+  const isFromEditable = true; // Set to true if you want users to enter their email
 
   return (
     <form
